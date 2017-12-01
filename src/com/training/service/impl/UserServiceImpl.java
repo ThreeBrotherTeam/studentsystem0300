@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 		fields.put(UserModel.PASSWORD, password);
 		List<UserModel> models = commonService.getEntitiesByFields(UserModel.class, fields);
 		List<UserData> datas = new ArrayList<UserData>();
-		if (datas != null) {
+		if (models != null) {
 			for (UserModel model : models) {
 				UserData data = new UserData();
 				data.setId(model.getId());
