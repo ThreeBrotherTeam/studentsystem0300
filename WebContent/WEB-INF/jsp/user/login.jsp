@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>    
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html >
@@ -12,9 +13,18 @@
 	<h1>login</h1>
 	<hr>
 	<form:form action="login" method="post" commandName="userForm">
-		<font color="red"><form:errors path="name"/></font>
-		<font color="red"><form:errors path="password"/></font>
-		<font color="red"><form:errors path="verifyCode"/></font>
+		<c:if test="${empty name }">
+			<font color="red"><form:errors path="name" /></font>
+			<br>
+		</c:if>
+		<c:if test="${empty password }">
+			<font color="red"><form:errors path="password" /></font>
+			<br>
+		</c:if>
+		<c:if test="${empty verifyCode }">
+			<font color="red"><form:errors path="verifyCode" /></font>
+			<br>
+		</c:if>
 		<spring:message code="user.name"/>:<form:input path="name"/><br>
 		<spring:message code="user.password"/>:<form:password path="password"/><br>
 		<spring:message code="user.verifyCode"/>:<form:input path="verifyCode"/>

@@ -26,29 +26,32 @@ public class UserValidator implements Validator {
 			String verifyCode = userForm.getVerifyCode();
 
 			if (StringUtils.isBlank(name)) {
-				errors.rejectValue(name, "user.name.empty");
+				errors.rejectValue(UserForm.NAME, "user.name.empty");
 			}
 			if (!StringUtils.equals(password, confirmPassword)) {
-				errors.rejectValue(password, "user.password.equal.erro");
+				errors.rejectValue(UserForm.PASSWORD, "user.password.equal.erro");
 			}
 			if (StringUtils.isBlank(mobile)) {
-				errors.rejectValue(mobile, "user.mobile.empty");
+				errors.rejectValue(UserForm.MOBILE, "user.mobile.empty");
 			}
 			if (StringUtils.isBlank(verifyCode)) {
-				errors.rejectValue(verifyCode, "user.verifyCode.empty");
+				errors.rejectValue(UserForm.VERIFYCODE, "user.verifyCode.empty");
 			}
 		}
 		String name = userForm.getName();
 		String password = userForm.getPassword();
 		String verifyCode = userForm.getVerifyCode();
 		if (StringUtils.isBlank(name)) {
-			errors.rejectValue(name, "user.name.empty");
+			errors.rejectValue(UserForm.NAME, "user.name.empty");
+			return;
 		}
 		if (StringUtils.isBlank(password)) {
-			errors.rejectValue(password, "user.password.empty");
+			errors.rejectValue(UserForm.PASSWORD, "user.password.empty");
+			return;
 		}
 		if (StringUtils.isBlank(verifyCode)) {
-			errors.rejectValue(verifyCode, "user.verifyCode.empty");
+			errors.rejectValue(UserForm.VERIFYCODE, "user.verifyCode.empty");
+			return;
 		}
 	}
 
